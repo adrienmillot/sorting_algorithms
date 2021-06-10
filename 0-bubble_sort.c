@@ -5,6 +5,9 @@ void bubble_sort(int *array, size_t size)
 	size_t cloop, cloop2;
 	int tmp;
 
+	if (array == NULL || size < 2)
+		return;
+
 	for (cloop2 = 1; cloop2 <= size; cloop2++)
 	{
 		for (cloop = 0; cloop < size - 1; cloop++)
