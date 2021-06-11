@@ -23,5 +23,6 @@ void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void insertion_sort_list(listint_t **prmList);
 void swap_node(listint_t **prmCurrent);
+void selection_sort(int *prmArray, size_t prmSize);
 
 #endif
