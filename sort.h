@@ -32,5 +32,8 @@ void swap_node_before(listint_t **prmCurrent);
 void selection_sort(int *prmArray, size_t prmSize);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
+void quick_sort_hoare(int *array, size_t size);
+void quicksort_hoare(int *array, int begining, int end, size_t size);
+int partition_hoare(int *array, int begining, int end, size_t size);
 
 #endif
