@@ -27,7 +27,10 @@ void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void insertion_sort_list(listint_t **prmList);
 void swap_node(listint_t **prmCurrent);
+void swap_node_after(listint_t **prmCurrent);
+void swap_node_before(listint_t **prmCurrent);
 void selection_sort(int *prmArray, size_t prmSize);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 #endif
