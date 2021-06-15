@@ -82,5 +82,7 @@ void sort(int *prmArray, int prmStart, int prmEnd)
 
 void merge_sort(int *prmArray, size_t prmSize)
 {
+	if (prmArray == NULL || prmSize < 2)
+		return;
 	sort(prmArray, 0, prmSize - 1);
 }
