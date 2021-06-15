@@ -1,5 +1,13 @@
 #include "sort.h"
 
+/**
+ * selection_sort - function that sorts an array of integers
+ * in ascending order using the Selection sort algorithm
+ * @prmArray: pointer to the array of int to sort
+ * @prmSize: size of the array
+ * Return: nothing void
+ */
+
 void selection_sort(int *prmArray, size_t prmSize)
 {
 	size_t cLoop1, cLoop2, cLoopMin;

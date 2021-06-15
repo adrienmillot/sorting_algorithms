@@ -1,5 +1,11 @@
 #include "sort.h"
 
+/**
+ * swap_node - function that swap node
+ * @prmCurrent: current node
+ * Return - nothing void
+ */
+
 void swap_node(listint_t **prmCurrent)
 {
 	listint_t *previous, *after;
@@ -19,6 +25,13 @@ void swap_node(listint_t **prmCurrent)
 	else
 		previous->next = after;
 }
+
+/**
+ * insertion_sort_list - function that sorts a doubly linked list of integers
+ * in ascending order using the Insertion sort algorithm
+ * @prmList: pointer to list to sort
+ * Return: nothing void
+ */
 
 void insertion_sort_list(listint_t **prmList)
 {
@@ -46,4 +59,3 @@ void insertion_sort_list(listint_t **prmList)
 		current = current->next;
 	}
 }
-
