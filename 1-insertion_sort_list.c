@@ -9,7 +9,12 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *after = (*list)->next;
+	listint_t *after;
+
+	if (list == NULL || *list == NULL)
+		return;
+
+	after = (*list)->next;
 
 	while (after != NULL)
 	{
