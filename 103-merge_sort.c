@@ -16,23 +16,20 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 	int tmp1[4096], tmp2[4096];
 	int *tmp3 = malloc(sizeof(int) * (size1 + size2));
 
-	for (cLoop1 = 0; cLoop1 < size1; cLoop1++)
+	for (cLoop1 = 0, cLoop2 = 0; cLoop1 < size1 || cLoop2 < size2; cLoop1++, cLoop2++)
+	{
 		tmp1[cLoop1] = prmArray[prmStart + cLoop1];
-
-	for (cLoop2 = 0; cLoop2 < size2; cLoop2++)
 		tmp2[cLoop2] = prmArray[prmMiddle + 1 + cLoop2];
+	}
 
-	cLoop1 = cLoop2 = 0;
-	cLoop3 = prmStart;
-
-	while (cLoop1 < size1 && cLoop2 < size2)
+	for (cLoop1 = cLoop2 = 0, cLoop3 = prmStart;
+	     cLoop1 < size1 && cLoop2 < size2; cLoop3++)
 		if (tmp1[cLoop1] <= tmp2[cLoop2])
-			prmArray[cLoop3++] = tmp3[cLoop4++] = tmp1[cLoop1++];
+			prmArray[cLoop3] = tmp3[cLoop4++] = tmp1[cLoop1++];
 		else
-			prmArray[cLoop3++] = tmp3[cLoop4++] = tmp2[cLoop2++];
+			prmArray[cLoop3] = tmp3[cLoop4++] = tmp2[cLoop2++];
 
-	printf("Merging...\n");
-	printf("[left]: ");
+	printf("Merging...\n[left]: ");
 	print_array(tmp1, size1);
 	printf("[right]: ");
 	print_array(tmp2, size2);
