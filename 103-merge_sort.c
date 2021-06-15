@@ -1,6 +1,14 @@
 #include "sort.h"
 #include "string.h"
 
+/**
+ * merge - merge two part of an array
+ * @prmArray: array of int to sort
+ * @prmStart: start of the array
+ * @prmMiddle: middle of the array
+ * @prmEnd: end of the array
+ * Return: nothing void
+ */
 void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 {
 	int cLoop1, cLoop2, cLoop3, cLoop4 = 0;
@@ -66,6 +74,14 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 	free(tmp3);
 }
 
+/**
+ * sort - sort the array then merge it recursively
+ * @prmArray: array of int to sort
+ * @prmStart: begin of the array
+ * @prmEnd: end of the array
+ * Return: nothing void
+ */
+
 void sort(int *prmArray, int prmStart, int prmEnd)
 {
 	int middle;
@@ -78,6 +94,14 @@ void sort(int *prmArray, int prmStart, int prmEnd)
 		merge(prmArray, prmStart, middle, prmEnd);
 	}
 }
+
+/**
+ * merge_sort - function that sorts an array of integers in ascending
+ * order using the Merge sort algorithm
+ * @prmArray: array of int to sort
+ * @prmSize: size of the array
+ * Return: nothing void
+ */
 
 void merge_sort(int *prmArray, size_t prmSize)
 {
