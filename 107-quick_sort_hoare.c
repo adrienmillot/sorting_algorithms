@@ -75,7 +75,7 @@ int partition_hoare(int *array, int low, int high, size_t size)
 		{
 			j -= 1;
 		}
-		if (i < j)
+		if (i <= j)
 		{
 			swap(&array[i], &array[j]);
 			print_array(array, size);
