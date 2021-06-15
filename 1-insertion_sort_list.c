@@ -29,15 +29,15 @@ void swap_node(listint_t **prmCurrent)
 /**
  * insertion_sort_list - function that sorts a doubly linked list of integers
  * in ascending order using the Insertion sort algorithm
- * @prmList: pointer to list to sort
+ * @list: pointer to list to sort
  * Return: nothing void
  */
 
-void insertion_sort_list(listint_t **prmList)
+void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = *prmList, *after;
+	listint_t *current = *list, *after;
 
-	if (prmList == NULL || *prmList == NULL || (*prmList)->next == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
 	while (current != NULL)
@@ -48,11 +48,11 @@ void insertion_sort_list(listint_t **prmList)
 			swap_node(&current);
 
 			if (current->prev != NULL)
-				current = *prmList;
+				current = *list;
 			else
-				*prmList = current;
+				*list = current;
 
-			print_list(*prmList);
+			print_list(*list);
 			continue;
 		}
 
