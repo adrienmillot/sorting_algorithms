@@ -53,7 +53,7 @@ void insertion_sort_list(listint_t **list)
 				*list = current;
 
 			print_list(*list);
-			
+			continue;
 		}
 
 		current = current->next;
