@@ -63,23 +63,23 @@ int partition_hoare(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = low - 1;
-	int j = high;
+	int j = high + 1;
 
-	while (i < j)
+	while (1)
 	{
-		while (array[i] < pivot)
-		{
+		do {
 			i += 1;
-		}
-		while (array[j] > pivot)
-		{
+		} while (array[i] < pivot);
+		do {
 			j -= 1;
-		}
-		if (i < j)
+		} while (array[j] > pivot);
+		if (i >= j)
+			return (i);
+		if (i != j)
 		{
 			swap(&array[i], &array[j]);
 			print_array(array, size);
 		}
 	}
-	return (i);
+	return (0);
 }
