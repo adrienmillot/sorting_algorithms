@@ -13,7 +13,7 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 {
 	int cLoop1, cLoop2, cLoop3, cLoop4 = 0;
 	int size1 = prmMiddle - prmStart + 1, size2 = prmEnd - prmMiddle;
-	int *tmp1 = malloc(sizeof(int) * size1), *tmp2 = malloc(sizeof(int) * size2);
+	int tmp1[4096], tmp2[4096];
 	int *tmp3 = malloc(sizeof(int) * (size1 + size2));
 
 	for (cLoop1 = 0; cLoop1 < size1; cLoop1++)
@@ -46,8 +46,6 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 	printf("[Done]: ");
 	print_array(tmp3, size1 + size2);
 
-	free(tmp1);
-	free(tmp2);
 	free(tmp3);
 }
 
