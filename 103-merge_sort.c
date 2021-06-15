@@ -12,12 +12,9 @@
 void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 {
 	int cLoop1, cLoop2, cLoop3, cLoop4 = 0;
-	int size1 = prmMiddle - prmStart + 1;
-	int size2 = prmEnd - prmMiddle;
-	int size3 = size1 + size2;
-	int *tmp1 = malloc(sizeof(int) * size1);
-	int *tmp2 = malloc(sizeof(int) * size2);
-	int *tmp3 = malloc(sizeof(int) * size3);
+	int size1 = prmMiddle - prmStart + 1, size2 = prmEnd - prmMiddle;
+	int *tmp1 = malloc(sizeof(int) * size1), *tmp2 = malloc(sizeof(int) * size2);
+	int *tmp3 = malloc(sizeof(int) * (size1 + size2));
 
 	for (cLoop1 = 0; cLoop1 < size1; cLoop1++)
 		tmp1[cLoop1] = prmArray[prmStart + cLoop1];
@@ -29,21 +26,10 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 	cLoop3 = prmStart;
 
 	while (cLoop1 < size1 && cLoop2 < size2)
-	{
 		if (tmp1[cLoop1] <= tmp2[cLoop2])
-		{
-			prmArray[cLoop3] = tmp1[cLoop1];
-			tmp3[cLoop4++] = tmp1[cLoop1];
-			cLoop1++;
-		}
+			prmArray[cLoop3++] = tmp3[cLoop4++] = tmp1[cLoop1++];
 		else
-		{
-			prmArray[cLoop3] = tmp2[cLoop2];
-			tmp3[cLoop4++] = tmp2[cLoop2];
-			cLoop2++;
-		}
-		cLoop3++;
-	}
+			prmArray[cLoop3++] = tmp3[cLoop4++] = tmp2[cLoop2++];
 
 	printf("Merging...\n");
 	printf("[left]: ");
@@ -52,22 +38,13 @@ void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd)
 	print_array(tmp2, size2);
 
 	while (cLoop1 < size1)
-	{
-		prmArray[cLoop3] = tmp1[cLoop1];
-		tmp3[cLoop4++] = tmp1[cLoop1];
-		cLoop1++;
-		cLoop3++;
-	}
+		prmArray[cLoop3++] = tmp3[cLoop4++] = tmp1[cLoop1++];
 
 	while (cLoop2 < size2)
-	{
-		prmArray[cLoop3] = tmp2[cLoop2];
-		tmp3[cLoop4++] = tmp2[cLoop2];
-		cLoop2++;
-		cLoop3++;
-	}
+		prmArray[cLoop3++] = tmp3[cLoop4++] = tmp2[cLoop2++];
+
 	printf("[Done]: ");
-	print_array(tmp3, size3);
+	print_array(tmp3, size1 + size2);
 
 	free(tmp1);
 	free(tmp2);
