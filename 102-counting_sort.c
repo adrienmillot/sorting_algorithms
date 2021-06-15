@@ -1,15 +1,23 @@
 #include "sort.h"
 #include "string.h"
 
-void counting_sort(int *A, size_t prmSize)
+/**
+ * counting_sort - function that sorts an array of integers
+ * in ascending order using the Counting sort algorithm
+ * @prmArray: array of int to sort
+ * @prmSize: size of the array
+ * Return: Nothing void
+ */
+void counting_sort(int *prmArray, size_t prmSize)
 {
-	unsigned i, j;
+	unsigned int i, j;
 	int maxValue = 0, value, index;
 	int *B = malloc(sizeof(int) * prmSize), *tmp;
-	memcpy(B, A, sizeof(int) * prmSize);
+
+	memcpy(B, prmArray, sizeof(int) * prmSize);
 
 	for (i = 0; i < prmSize; i++)
-		if (A[i] > maxValue)
+		if (prmArray[i] > maxValue)
 			maxValue = B[i];
 
 	tmp = malloc(sizeof(int) * (maxValue + 1));
@@ -29,7 +37,7 @@ void counting_sort(int *A, size_t prmSize)
 	{
 		value = *(B + j);
 		index = tmp[value];
-		*(A + index - 1) = value;
+		*(prmArray + index - 1) = value;
 		tmp[value] = tmp[value] - 1;
 	}
 
