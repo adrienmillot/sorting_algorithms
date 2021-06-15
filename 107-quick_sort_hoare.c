@@ -69,18 +69,18 @@ void swap(int *a, int *b)
 int partition_hoare(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i = (low - 1);
+	int i = low - 1;
 	int j = high;
 
 	do {
-		i++;
+		i += 1;
 		while (array[i] < pivot)
 		{
-			i++;
+			i += 1;
 		}
 		while (array[j] > pivot)
 		{
-			j--;
+			j -= 1;
 		}
 		if (i < j)
 		{
