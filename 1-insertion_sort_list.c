@@ -1,32 +1,6 @@
 #include "sort.h"
 
 /**
- * swap_node - function that swap node
- * @prmCurrent: current node
- * Return - nothing void
- */
-
-void swap_node(listint_t **prmCurrent)
-{
-	listint_t *previous, *after;
-
-	previous = (*prmCurrent)->prev;
-	after    = (*prmCurrent)->next;
-
-	if (after->next != NULL)
-		after->next->prev = (*prmCurrent);
-	(*prmCurrent)->next = after->next;
-	after->prev = previous;
-	after->next = (*prmCurrent);
-	(*prmCurrent)->prev = after;
-
-	if (previous == NULL)
-		*prmCurrent = (*prmCurrent)->prev;
-	else
-		previous->next = after;
-}
-
-/**
  * insertion_sort_list - function that sorts a doubly linked list of integers
  * in ascending order using the Insertion sort algorithm
  * @list: pointer to list to sort
@@ -35,27 +9,26 @@ void swap_node(listint_t **prmCurrent)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = *list, *after;
+	listint_t *after = (*list)->next;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
-	while (current != NULL)
+	while (after != NULL)
 	{
-		after = current->next;
-		if (after != NULL && current->n > after->n)
+		while (after->prev && after->prev->n > after->n)
 		{
-			swap_node(&current);
+			after->prev->next = after->next;
+			if (after->next)
+				after->next->prev = after->prev;
+			after->next = after->prev;
+			after->prev = after->next->prev;
+			after->next->prev = after;
 
-			if (current->prev != NULL)
-				current = *list;
+			if (after->prev == NULL)
+				*list = after;
 			else
-				*list = current;
+				after->prev->next = after;
 
 			print_list(*list);
-			continue;
 		}
-
-		current = current->next;
+		after = after->next;
 	}
 }
