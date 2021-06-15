@@ -63,7 +63,7 @@ int partition_hoare(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = (low - 1);
-	int j = (high + 1);
+	int j = high;
 
 	do {
 		i += 1;
@@ -81,7 +81,5 @@ int partition_hoare(int *array, int low, int high, size_t size)
 			print_array(array, size);
 		}
 	} while (i < j);
-	if (i > j)
-		return (j);
 	return (i);
 }
