@@ -1,5 +1,14 @@
 #include "sort.h"
 
+/**
+ * quick_sort_hoare - function that sorts an array of integers
+ * in ascending order using the Quick sort algorithm
+ * @array: pointer to the array to sort
+ * @size: size of the array
+ * Return: nothing void
+ */
+
+
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
@@ -7,6 +16,17 @@ void quick_sort_hoare(int *array, size_t size)
 
 	quicksort_hoare(array, 0, size - 1, size);
 }
+
+/**
+ * quicksort_hoare - function that sorts an array of integers
+ * in ascending order using the Quick sort algorithm
+ * @array: pointer to the array to sort
+ * @low: start of the array
+ * @high: end of the array
+ * @size: size of the array
+ * Return: nothing void
+ */
+
 
 void quicksort_hoare(int *array, int low, int high, size_t size)
 {
@@ -20,6 +40,13 @@ void quicksort_hoare(int *array, int low, int high, size_t size)
 	}
 }
 
+/**
+ * swap - function that swap value
+ * @a: pointer to the first value
+ * @b: pointer to the second value
+ * Return: nothing void
+ */
+
 void swap(int *a, int *b)
 {
 	int tmp;
@@ -29,14 +56,23 @@ void swap(int *a, int *b)
 	*b = tmp;
 }
 
+/**
+ * partition_hoare - function that partition an array of int
+ * and swap the value
+ * @array: array to partition
+ * @low: beggining of the array
+ * @high: end of the array
+ * @size: size of the array
+ * Return: returns the nwes index oh the value
+ */
+
 int partition_hoare(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
 	int i = low - 1;
 	int j = high;
 
-	do
-	{
+	do {
 		i += 1;
 		while (array[i] < pivot)
 		{
@@ -44,7 +80,7 @@ int partition_hoare(int *array, int low, int high, size_t size)
 		}
 		while (array[j] > pivot)
 		{
-			j-= 1;
+			j -= 1;
 		}
 		if (i < j)
 		{
