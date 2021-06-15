@@ -7,8 +7,6 @@
  * @size: size of the array
  * Return: nothing void
  */
-
-
 void quick_sort_hoare(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
@@ -26,8 +24,6 @@ void quick_sort_hoare(int *array, size_t size)
  * @size: size of the array
  * Return: nothing void
  */
-
-
 void quicksort_hoare(int *array, int low, int high, size_t size)
 {
 	int index;
@@ -39,14 +35,12 @@ void quicksort_hoare(int *array, int low, int high, size_t size)
 		quicksort_hoare(array, index, high, size);
 	}
 }
-
 /**
  * swap - function that swap value
  * @a: pointer to the first value
  * @b: pointer to the second value
  * Return: nothing void
  */
-
 void swap(int *a, int *b)
 {
 	int tmp;
@@ -55,7 +49,6 @@ void swap(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
-
 /**
  * partition_hoare - function that partition an array of int
  * and swap the value
@@ -65,22 +58,21 @@ void swap(int *a, int *b)
  * @size: size of the array
  * Return: returns the nwes index oh the value
  */
-
 int partition_hoare(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i = low - 1;
-	int j = high;
+	int i = (low - 1);
+	int j = (high + 1);
 
 	do {
-		i += 1;
+		i++;
 		while (array[i] < pivot)
 		{
-			i += 1;
+			i++;
 		}
 		while (array[j] > pivot)
 		{
-			j -= 1;
+			j--;
 		}
 		if (i < j)
 		{
@@ -88,5 +80,7 @@ int partition_hoare(int *array, int low, int high, size_t size)
 			print_array(array, size);
 		}
 	} while (i < j);
+	if (i >= j)
+		return (j);
 	return (i);
 }
